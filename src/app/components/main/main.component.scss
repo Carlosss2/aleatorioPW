@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Code Pro', monospace;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%; /* Ajusta al 100% del contenedor */
+}
+
+.left-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.box {
+    background-color: #21a1f1;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.left-box {
+    background-color: #ff6b6b;
+}
+
+.right-box {
+    background-color: #1e90ff;
+}
+
+.vs {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2f3542;
+    margin: 0 20px;
+}
+
+/* Ajuste del ancho total del bottom-box */
+.bottom-box {
+    background-color: #282c34;
+    width: 100vw; /* Ocupa el ancho total de la ventana */
+    padding: 30px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Encabezado del div de Participación */
+.bottom-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Contenedor de las filas de alumnos */
+.participation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para cada fila de alumno */
+.student-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-row div {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.student-row button {
+    background-color: #21a1f1;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.student-row button:hover {
+    background-color: #e84118;
+}
+
+.ready-btn {
+    background-color: #21a1f1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ready-btn:hover {
+    background-color: #e84118;
+}
+
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-spacing: 10px;
+}
+
+table td {
+    background-color: white;
+    color: #333;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

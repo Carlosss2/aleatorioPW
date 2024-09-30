@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+<main class="container">
+  <div class="left-right">
+    <div class="box left-box">
+      <h2>Equipo A</h2>
+      <table>
+        @for (elementStudentA of studentArrayA; track elementStudentA) {
+            <tr>
+                <td>{{elementStudentA.name}}</td>
+            </tr>
+        }
+      </table>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="box right-box">
+      <h2>Equipo B</h2>
+      <table>
+        @for (elementStudentB of studentArrayB; track elementStudentB) {
+            <tr>
+                <td>{{elementStudentB.name}}</td>
+            </tr>
+        }
+        
+      </table>
+    </div>
+  </div>
+
+  <div class="box bottom-box">
+    <h3>Participación de Alumnos</h3>
+    <div class="participation-container">
+      <div class="student-row">
+        <div>Alumno A: {{ selectedStudentA?.name || 'Sin seleccionar' }}</div>
+        <button (click)="selectionRandom()">Agregar</button>
+      </div>
+
+      <div class="student-row">
+        <div>Alumno B: {{ selectedStudentB?.name || 'Sin seleccionar' }}</div>
+      </div>
+    </div>
+
+    <h3>Estudiantes Participantes</h3>
+    <div class="participation-container">
+      <div>
+        <h4>Equipo A</h4>
+        @for (elementStudentA of participatedStudents.studentArrayA; track elementStudentA) {
+            <tr>
+                <td>{{elementStudentA.name}}</td>
+            </tr>
+        }
+       
+      </div>
+
+      <div>
+        <h4>Equipo B</h4>
+        @for (elementStudentB of participatedStudents.studentArrayB; track elementStudentB) {
+            <tr>
+                <td>{{elementStudentB.name}}</td>
+            </tr>
+        }
+        
+      </div>
+    </div>
+  </div>
+</main>
