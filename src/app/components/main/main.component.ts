@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-
+import { HeaderComponent } from "../header/header.component";
 import { Student } from '../../models/student';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, CommonModule],
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit {
   studentArrayA: Student[] = [
@@ -44,44 +44,42 @@ export class MainComponent implements OnInit {
     { name: "Ulises", id: 13 }
   ];
 
-  participatedStudents: { studentArrayA: Student[], studentArrayB: Student[] } = {
-    studentArrayA: [],
-    studentArrayB: []
-  };
-
   selectedStudentA: Student | null = null;
   selectedStudentB: Student | null = null;
+  eliminatedStudents: { team: string; student: Student }[] = [];
 
-  ngOnInit(): void {
-    console.log(this.participatedStudents);
-  }
+  ngOnInit(): void {}
 
-  selectionRandom(): void {
+  seleccionarAlumno() {
+    // Seleccionar un índice aleatorio para el equipo A
     const randomIndexA = Math.floor(Math.random() * this.studentArrayA.length);
-    const randomIndexB = Math.floor(Math.random() * this.studentArrayB.length);
-
     this.selectedStudentA = this.studentArrayA[randomIndexA];
+
+    // Seleccionar un índice aleatorio para el equipo B
+    const randomIndexB = Math.floor(Math.random() * this.studentArrayB.length);
     this.selectedStudentB = this.studentArrayB[randomIndexB];
 
-    // Llamar correctamente a selectionFinish
-    this.selectionFinish();
+    // Eliminar los estudiantes seleccionados de los arreglos
+    this.studentArrayA.splice(randomIndexA, 1);
+    this.studentArrayB.splice(randomIndexB, 1);
+
+    // Agregar los seleccionados a la lista de eliminados
+    this.eliminados();
   }
 
-  selectionFinish(): void {
+  eliminados() {
+    // Si la lista de eliminados no ha sido inicializada, inicialízala
+    if (!this.eliminatedStudents) {
+        this.eliminatedStudents = [];
+    }
+  
+    // Agregar los estudiantes seleccionados a la lista de eliminados
     if (this.selectedStudentA) {
-      this.participatedStudents.studentArrayA.push(this.selectedStudentA);
-      // Eliminar al estudiante seleccionado del array original
-      this.studentArrayA = this.studentArrayA.filter(student => student.id !== this.selectedStudentA?.id);
+        this.eliminatedStudents.push({ team: 'Equipo A', student: this.selectedStudentA });
     }
-
+  
     if (this.selectedStudentB) {
-      this.participatedStudents.studentArrayB.push(this.selectedStudentB);
-      // Eliminar al estudiante seleccionado del array original
-      this.studentArrayB = this.studentArrayB.filter(student => student.id !== this.selectedStudentB?.id);
+        this.eliminatedStudents.push({ team: 'Equipo B', student: this.selectedStudentB });
     }
-
-    // Reiniciar selección para la siguiente iteración
-    this.selectedStudentA = null;
-    this.selectedStudentB = null;
   }
 }
